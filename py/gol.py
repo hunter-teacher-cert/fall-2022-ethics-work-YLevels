@@ -67,9 +67,50 @@ def countNeighbours(board, r, c):
               
     return counter
 
+# precond: given a board and a cell
+# postcond: return next generation cell state based on CGOL rules (alive 'X', dead ' ')
+def getNextGenCell (board, r, c):
+  currentStatus = board[r][c];
+  aliveNeighbours = countNeighbours(board, r, c)
+
+  if (currentStatus == DEAD and aliveNeighbours == 3):
+    return ALIVE
+  if (currentStatus == ALIVE) and (aliveNeighbours == 2 or aliveNeighbours == 3):
+    return ALIVE
+  return DEAD
+
+# generate and return a new board representing next generation
+def generateNextBoard(board):
+  rows = len(board)
+  cols = len(board[0])
+  nextBoard = createNewBoard(rows, cols)
+
+  for i in range(rows):
+    for j in range(cols):
+      setCell(nextBoard, i, j, getNextGenCell(board, i, j))
+
+  return nextBoard
+  
 # test statements
-board = createNewBoard(10,10)
+board = createNewBoard(25,25)
 printBoard(board)
-setCell(board, 1, 2, "X")
+# setCell(board, 0, 0, ALIVE)
+# setCell(board, 0, 1, ALIVE)
+# setCell(board, 1, 0, ALIVE)
+# printBoard(board)
+# print(countNeighbours(board, 2, 2))
+
+for i in range(len(board)):
+  for j in range(len(board[0])):
+    if r.random() > 0.5:
+      setCell (board, i, j, ALIVE)
+
+print("Generation 0")
 printBoard(board)
-print(countNeighbours(board, 2, 2))
+print("-----\n\n")
+
+for i in range(10):
+  board = generateNextBoard(board)
+  print("Generation" + str(i))
+  printBoard(board)
+  print("-------\n\n")
