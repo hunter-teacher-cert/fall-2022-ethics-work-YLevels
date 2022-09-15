@@ -3,6 +3,7 @@
 # CSCI 77800 Fall 2022
 # collaborators: just me
 # consulted: ThinkPython; w3schools
+# translated from: SortSearch.java in my github
 
 def binSearch(list, target):
   low = 0
