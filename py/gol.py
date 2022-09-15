@@ -3,6 +3,7 @@
 # CSCI 77800 Fall 2022
 # collaborators: just me
 # consulted: ThinkPython; w3schools
+# translated from: Cgol.java in my github
 
 # use python random module
 import random as r
