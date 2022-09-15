@@ -3,6 +3,7 @@
 # CSCI 77800 Fall 2022
 # collaborators: just me
 # consulted: ThinkPython; w3schools
+# translated from: nim.java in my github
 
 import random as r  #alias for random module
 
